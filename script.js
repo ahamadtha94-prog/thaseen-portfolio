@@ -83,7 +83,7 @@
         const rect = scene.getBoundingClientRect();
         const length = Math.max(1, rect.height - innerHeight);
         const p = clamp(-rect.top / length, 0, 1);
-        const movement = (p - .5) * Math.min(innerWidth * .84, 1050);
+        const movement = (p - .5) * Math.min(innerWidth * .5, 620);
         scene.style.setProperty('--motion-x', `${movement.toFixed(1)}px`);
         scene.style.setProperty('--scene-ax', `${((p - .5) * 105).toFixed(1)}px`);
         scene.style.setProperty('--scene-ay', `${((.5 - p) * 62).toFixed(1)}px`);
