@@ -242,3 +242,160 @@ html.motion-paused .about-portrait-wrap.portrait-transparent{translate:0 0!impor
   .portfolio-scene .scene-caption a{font-size:10px}
   .portfolio-scene .scene-topline{font-size:9px;letter-spacing:.035em}
 }
+
+/* V8.2 mobile-first visual corrections — 11 November 2026
+   Keep the cinematic desktop composition; prioritize complete, legible content
+   and easy touch navigation on narrow screens. */
+@media (max-width:600px) {
+  /* Header and introduction */
+  .nav-shell{gap:12px!important}
+  .brand-name{font-size:9px;line-height:1.35}
+  .hero .hero-layout{padding-top:118px}
+  .hero h1{font-size:clamp(51px,11.6vw,66px);line-height:1.07;letter-spacing:-.065em}
+  .hero h1 .headline-morph{
+    background:none!important;color:#f7f5f6!important;
+    -webkit-text-fill-color:#f7f5f6!important;
+  }
+  .hero-portrait-stage{height:min(102vw,430px);margin-top:4px}
+  .hero-subtitle{font-size:15px;line-height:1.82}
+  .hero-actions .button{white-space:normal;text-align:left}
+  .hero-smallprint{line-height:1.65}
+  .hero-footer{margin-bottom:12px}
+  /* About: preserve the original cut-out portrait, reduce vertical dead space. */
+  .about-grid{gap:16px}
+  .about-portrait-wrap.portrait-transparent{
+    width:min(100%,450px);height:min(122vw,490px)!important;
+    min-height:0!important;margin:0 auto;
+  }
+  .about-content h2{
+    font-size:clamp(37px,9.5vw,49px)!important;
+    line-height:1.1;letter-spacing:-.064em;
+    overflow-wrap:normal;
+  }
+  .about-content h3{font-size:19px;line-height:1.4}
+  .about-content>p{font-size:14px;line-height:1.88}
+  .about-metrics small{font-size:10px;line-height:1.4}
+  /* Kinetic typography: words must stay completely readable on phones. */
+  .kinetic-interlude{height:clamp(420px,120vw,545px)}
+  .kinetic-coordinates{top:8%;font-size:10px;letter-spacing:.09em}
+  .kinetic-row,
+  .kinetic-row-a,.kinetic-row-b,.kinetic-row-c{
+    left:5%!important;right:5%!important;
+    justify-content:flex-start!important;
+    transform:none!important;translate:0 0!important;
+  }
+  .kinetic-row{
+    font-size:clamp(43px,11.2vw,62px)!important;
+    line-height:1.02;letter-spacing:-.08em;gap:10px;
+  }
+  .kinetic-row-a{top:23%}
+  .kinetic-row-b{top:43%}
+  .kinetic-row-c{top:63%}
+  .kinetic-row i{font-size:11px}
+  .kinetic-caption{bottom:5%;gap:8px}
+  .kinetic-caption span{font-size:10px;letter-spacing:.08em}
+  .kinetic-caption p{font-size:12px;line-height:1.5}
+  /* Four creative worlds: replace the clipped tilted stage with a neat
+     two-column image gallery on small touch screens. */
+  .portfolio-motion{height:auto!important;min-height:0!important}
+  .portfolio-motion .portfolio-scene{
+    position:relative!important;top:auto!important;
+    display:flex;flex-direction:column;
+    min-height:0!important;height:auto!important;
+    padding:95px 0 55px;overflow:hidden;
+  }
+  .portfolio-scene .scene-index{
+    position:relative;top:auto;left:auto;right:auto;
+    order:0;margin:0 5%;font-size:11px;
+    line-height:1.5;letter-spacing:.065em;
+  }
+  .portfolio-scene .scene-topline,
+  .portfolio-scene .scene-bottom,
+  .portfolio-scene .scene-depth-readout{display:none!important}
+  .portfolio-scene .scene-word-wrap{
+    position:relative!important;inset:auto!important;
+    display:block;width:100%;height:auto;z-index:3;
+    margin:14px 0 4px;padding:0 5%;overflow:visible;
+    order:1;
+  }
+  .portfolio-scene .scene-word{
+    display:block;position:relative!important;
+    top:auto!important;left:auto!important;
+    transform:none!important;translate:0 0!important;
+    font-size:clamp(39px,10vw,64px)!important;
+    line-height:1.08;letter-spacing:-.08em;
+    opacity:.94;white-space:nowrap;filter:none;
+    will-change:auto;
+  }
+  .portfolio-scene .scene-visuals{
+    position:relative;inset:auto;width:90%;margin:16px auto 0;
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;order:2;z-index:3;
+  }
+  .portfolio-scene .scene-photo,
+  .portfolio-scene .scene-photo-a,
+  .portfolio-scene .scene-photo-b,
+  .portfolio-scene .scene-photo-c,
+  .portfolio-scene .scene-photo-d{
+    position:relative!important;left:auto!important;right:auto!important;
+    top:auto!important;bottom:auto!important;
+    display:block;width:100%!important;height:auto!important;
+    aspect-ratio:3/4;
+    transform:none!important;translate:0 0!important;
+    filter:brightness(1.02);margin:0;
+    border-radius:13px;box-shadow:0 12px 34px rgba(0,0,0,.34);
+  }
+  .portfolio-scene .scene-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center;
+    transform:none!important;scale:1!important;
+  }
+  .portfolio-scene .scene-photo figcaption{
+    bottom:8px;left:8px;right:auto;max-width:calc(100% - 16px);
+    font-size:9px;line-height:1.2;
+    padding:7px 8px;white-space:normal;
+    letter-spacing:.02em;
+  }
+  .portfolio-scene .scene-caption{
+    position:relative;left:auto;right:auto;bottom:auto;top:auto;
+    order:3;margin:26px 5% 0;padding:0;
+    display:flex;flex-direction:column;
+    align-items:flex-start;gap:14px;
+    z-index:5;
+  }
+  .portfolio-scene .scene-caption strong{font-size:clamp(24px,6.2vw,30px);line-height:1.13}
+  .portfolio-scene .scene-caption small{font-size:11px;margin-bottom:7px}
+  .portfolio-scene .scene-caption a{
+    padding:10px 0;font-size:11px;
+    max-width:none;white-space:normal;text-align:left;
+  }
+  .portfolio-scene .scene-caption a span{margin-left:12px}
+  /* Responsive project story section */
+  .projects .story-navigation{margin-bottom:55px;gap:6px;padding:9px}
+  .projects .story-navigation a{min-width:0;line-height:1.35;white-space:normal}
+  .story-info h3{line-height:1.09;overflow-wrap:normal}
+  .story-info>p{font-size:14px;line-height:1.8}
+  .story-steps span{font-size:12px;line-height:1.65}
+  /* Contact: prevent the outlined title from colliding with adjacent lines. */
+  .contact{padding-block:95px 90px}
+  .contact .contact-heading{
+    font-size:clamp(36px,9.2vw,49px)!important;
+    line-height:1.18;letter-spacing:-.065em;
+    margin:20px 0 38px;
+    overflow-wrap:normal;max-width:100%;
+  }
+  .contact .contact-heading span{
+    -webkit-text-stroke:.85px rgba(246,244,247,.9);
+  }
+  .contact-bottom{padding-top:27px;gap:25px}
+  .contact-bottom p{font-size:15px;line-height:1.84}
+  .contact-actions .button{min-width:0;width:100%;font-size:11px}
+  .contact-actions .inline-action{font-size:11px;letter-spacing:.035em;gap:15px}
+  .footer-upper{align-items:flex-start;gap:17px}
+  .footer-upper .backtop{margin-left:auto;font-size:10px;white-space:nowrap}
+  .footer-lower{line-height:1.6}
+}
+/* Keep effects disabled where the visitor requests less motion. */
+@media (max-width:600px) and (prefers-reduced-motion:reduce){
+  .portfolio-scene .scene-word{transform:none!important;translate:0 0!important}
+  .kinetic-row{transform:none!important;translate:0 0!important}
+}
