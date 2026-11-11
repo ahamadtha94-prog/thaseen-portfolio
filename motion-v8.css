@@ -179,3 +179,66 @@ html.motion-paused [data-reveal]{opacity:1!important;filter:none!important}
 }
 html.motion-paused .about-portrait-wrap.portrait-transparent{translate:0 0!important;transition:none!important}
 @media(prefers-reduced-motion:reduce){.about-portrait-wrap.portrait-transparent{translate:0 0!important;transition:none!important}}
+
+/* V8.1 portfolio typography / image hierarchy refinement — 11 Nov 2026.
+   The moving word is now an atmospheric layer, with artwork in front.
+   Scope is intentionally limited to the four-worlds portfolio interlude. */
+.portfolio-scene .scene-word-wrap{
+  z-index:1;
+}
+.portfolio-scene .scene-word{
+  font-size:clamp(112px,14vw,250px);
+  letter-spacing:-.09em;
+  opacity:.59;
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.28));
+}
+.portfolio-scene .scene-visuals{z-index:2}
+.portfolio-scene .scene-photo{
+  filter:brightness(1.04);
+}
+.portfolio-scene .scene-photo img{
+  filter:saturate(1.01) contrast(1.05);
+}
+.portfolio-scene .scene-photo figcaption{
+  font-size:clamp(10px,.73vw,12px);
+  letter-spacing:.075em;
+  padding:9px 12px;
+  background:rgba(7,8,14,.76);
+}
+.portfolio-scene .scene-caption{gap:clamp(20px,3vw,50px)}
+.portfolio-scene .scene-caption small{
+  font-size:clamp(11px,.8vw,13px);
+  letter-spacing:.1em;
+}
+.portfolio-scene .scene-caption a{
+  font-size:clamp(11px,.8vw,13px);
+  letter-spacing:.06em;
+  text-shadow:0 2px 12px rgba(0,0,0,.65);
+}
+.portfolio-scene .scene-topline{
+  font-size:clamp(10px,.72vw,12px);
+  letter-spacing:.1em;
+}
+@media(max-width:850px){
+  .portfolio-scene .scene-word{
+    font-size:clamp(100px,16vw,166px);
+    opacity:.55;
+  }
+  .portfolio-scene .scene-caption{gap:18px}
+}
+@media(max-width:600px){
+  .portfolio-scene .scene-word{
+    font-size:clamp(70px,19vw,112px);
+    opacity:.51;
+  }
+  .portfolio-scene .scene-photo figcaption{
+    font-size:9px;
+    padding:7px 8px;
+    letter-spacing:.035em;
+  }
+  .portfolio-scene .scene-caption{gap:10px}
+  .portfolio-scene .scene-caption small{font-size:10px}
+  .portfolio-scene .scene-caption strong{font-size:clamp(21px,5.3vw,26px)}
+  .portfolio-scene .scene-caption a{font-size:10px}
+  .portfolio-scene .scene-topline{font-size:9px;letter-spacing:.035em}
+}
