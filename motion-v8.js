@@ -10,6 +10,7 @@
   const hero = $('#home');
   const about = $('#about');
   const kinetic = $('#kinetic-interlude');
+  const kineticRows = kinetic ? $('.kinetic-row', kinetic) : [];
   const scene = $('#portfolio-motion');
   const motionButton = $('#motion-control');
   const label = $('.motion-control-label', motionButton || document);
@@ -108,12 +109,26 @@
         set(kinetic,'--torus-ay',npx((.5-p)*52 + my*24));
         set(kinetic,'--torus-bx',npx((.5-p)*45 - mx*22));
         set(kinetic,'--torus-by',npx((p-.5)*30 - my*15));
+        // Touch devices have no mouse parallax; these lines move in response to scrolling.
+        if (vw <= 600) {
+          const sweep = (p - .5) * 2;
+          const amplitude = clamp(vw * .065, 16, 27);
+          const shifts = [amplitude * sweep, -amplitude * .85 * sweep, amplitude * .9 * sweep];
+          const focus = [.26,.5,.74];
+          kineticRows.forEach((row, i) => {
+            set(row,'--mobile-kinetic-x',npx(shifts[i] || 0));
+            set(row,'--mobile-kinetic-y',npx((p - focus[i]) * (i === 1 ? -3 : 3)));
+            set(row,'--mobile-kinetic-opacity',clamp(1 - Math.abs(p - focus[i]) * .28, .82, 1).toFixed(3));
+          });
+        }
       }
     }
     if (scene) {
       const r=nearViewport(scene,120);
       if (r) {
-        const p=clamp(-r.top/Math.max(1,r.height-vh),0,1);
+        const p=vw <= 600
+          ? clamp((vh-r.top)/(vh+r.height),0,1)
+          : clamp(-r.top/Math.max(1,r.height-vh),0,1);
         set(scene,'--v8-scene-progress',p.toFixed(3));
         set(scene,'--scene-halo-x',npx(mx*46+(p-.5)*24));
         set(scene,'--scene-halo-y',npx(my*36));
@@ -124,6 +139,10 @@
           const [dx,dy]=offsets[i]||[10,12];
           set(el,'--scene-mouse-x',npx(mx*dx));
           set(el,'--scene-mouse-y',npx(my*dy));
+          if (vw <= 600) {
+            const lift = [11,-9,8,-10][i] || 6;
+            set(el,'--mobile-card-y',npx((p-.5) * lift));
+          }
         });
       }
     }
