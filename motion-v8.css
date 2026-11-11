@@ -399,3 +399,52 @@ html.motion-paused .about-portrait-wrap.portrait-transparent{translate:0 0!impor
   .portfolio-scene .scene-word{transform:none!important;translate:0 0!important}
   .kinetic-row{transform:none!important;translate:0 0!important}
 }
+
+/* V8.3 — touch-safe, scroll-responsive mobile motion. Desktop remains unchanged. */
+@media (max-width:600px) {
+  /* Keep every letter inside the viewport while each line moves independently. */
+  .kinetic-interlude .kinetic-row {
+    left:7%!important;
+    right:6%!important;
+    font-size:clamp(37px,10.8vw,57px)!important;
+    gap:9px;
+    line-height:1.05;
+    will-change:transform,opacity;
+  }
+  html:not(.motion-paused) .kinetic-interlude .kinetic-row {
+    transform:translate3d(var(--mobile-kinetic-x,0px),var(--mobile-kinetic-y,0px),0)!important;
+    translate:0 0!important;
+    opacity:var(--mobile-kinetic-opacity,1);
+    transition:transform .22s ease-out,opacity .22s ease-out!important;
+  }
+  .kinetic-interlude .kinetic-row-a {top:23%}
+  .kinetic-interlude .kinetic-row-b {top:43%;justify-content:flex-start!important}
+  .kinetic-interlude .kinetic-row-c {top:63%}
+  html:not(.motion-paused) .kinetic-interlude .kinetic-red {
+    animation:mobile-kinetic-accent 3.2s ease-in-out infinite;
+  }
+  @keyframes mobile-kinetic-accent {
+    0%,100% {opacity:.75;filter:drop-shadow(0 0 0 rgba(245,50,105,0))}
+    50% {opacity:1;filter:drop-shadow(0 0 10px rgba(245,50,105,.42))}
+  }
+  /* The gallery remains a true 2-column layout; only small vertical shifts move. */
+  html:not(.motion-paused) .portfolio-motion .portfolio-scene .scene-photo {
+    transform:translate3d(0,var(--mobile-card-y,0px),0)!important;
+    transition:transform .22s ease-out,box-shadow .35s ease!important;
+  }
+  /* Make the toggle's state visible rather than showing an ambiguous dot. */
+  .motion-control {width:55px!important;min-width:55px!important;gap:5px!important;padding:0 6px!important}
+  .motion-control::after {content:'ON';color:#f4d6df;font:800 9px/1 var(--text);letter-spacing:.04em}
+  html.motion-paused .motion-control::after {content:'OFF';color:#a7a6b1}
+  html.motion-paused .kinetic-interlude .kinetic-row,
+  html.motion-paused .portfolio-motion .portfolio-scene .scene-photo {
+    transform:none!important;opacity:1!important;
+  }
+}
+@media (max-width:600px) and (prefers-reduced-motion:reduce) {
+  .kinetic-interlude .kinetic-row,
+  .portfolio-motion .portfolio-scene .scene-photo {
+    transform:none!important;animation:none!important;opacity:1!important;
+  }
+  .kinetic-interlude .kinetic-red {animation:none!important}
+}
