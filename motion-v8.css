@@ -448,3 +448,38 @@ html.motion-paused .about-portrait-wrap.portrait-transparent{translate:0 0!impor
   }
   .kinetic-interlude .kinetic-red {animation:none!important}
 }
+
+
+/* V8.4 — visible mobile kinetic motion, even when the visitor stops scrolling.
+   Runs independently of scroll parallax. Stops with the Motion toggle or OS reduce-motion. */
+@media (max-width:600px) and (prefers-reduced-motion:no-preference) {
+  html:not(.motion-paused) .kinetic-interlude .kinetic-row > span {
+    will-change:transform;
+  }
+  html:not(.motion-paused) .kinetic-interlude .kinetic-row-a > span {
+    animation:v84-drift-a 3.8s ease-in-out infinite alternate !important;
+  }
+  html:not(.motion-paused) .kinetic-interlude .kinetic-row-b > span {
+    animation:v84-drift-b 4.7s ease-in-out infinite alternate !important;
+  }
+  html:not(.motion-paused) .kinetic-interlude .kinetic-row-c > span {
+    animation:v84-drift-c 4.2s ease-in-out infinite alternate !important;
+  }
+  @keyframes v84-drift-a {
+    from{transform:translate3d(-8px,-3px,0)}
+    to{transform:translate3d(10px,3px,0)}
+  }
+  @keyframes v84-drift-b {
+    from{transform:translate3d(8px,3px,0)}
+    to{transform:translate3d(-10px,-3px,0)}
+  }
+  @keyframes v84-drift-c {
+    from{transform:translate3d(-6px,2px,0)}
+    to{transform:translate3d(11px,-3px,0)}
+  }
+}
+@media (max-width:600px) {
+  html.motion-paused .kinetic-interlude .kinetic-row > span {
+    animation:none!important;transform:none!important;
+  }
+}
