@@ -1,31 +1,45 @@
-# A.T. Thaseen Ibrahim — Creative Portfolio
+# A.T. Thaseen Ibrahim — V8 Kinetic Atelier
 
-A ready-to-host, responsive personal portfolio website built with **HTML, CSS, and JavaScript**. The design features animated typography, scroll effects, a transparent portrait overlay, curated architectural and interior design galleries, and the THINN fragrance concept collection. All image files are bundled locally; no site builder or paid hosting is required.
+**Static, responsive creative portfolio for GitHub Pages.** No framework, build step or API keys are required.
 
-## Publish to GitHub Pages (free)
+## What changed from V7
 
-1. Sign in at https://github.com and create a **public** repository named `thaseen-portfolio` at https://github.com/new. Leave it empty if possible.
-2. Extract the downloaded ZIP. Open the repository on GitHub, select **Add file → Upload files** and drag all files **and the entire `assets` folder** from inside `thaseen-github-pages` into the upload area. Keep `index.html` at the repository ROOT (not inside a nested folder). Commit.
-3. Under your repository **Settings → Pages → Build and deployment**, choose **Deploy from a branch**.
-4. Select branch `main`, directory `/(root)`, then **Save**.
-5. Your URL will be `https://YOUR-USERNAME.github.io/thaseen-portfolio/`. Look for **Visit site** under Settings → Pages after deployment.
+- Multi-layer mouse parallax in the home hero: fog, light beam, circular glints, architectural grid, large typography and portrait move at different depths.
+- Scroll-linked cinematic transitions in the hero and four-image portfolio scene. All four scene photos have independent mouse-depth movement.
+- A new kinetic typography interlude with three words travelling at separate speeds as you scroll.
+- More dimensional portfolio category hovers: background image and overlay typography respond separately to the pointer.
+- Extra perspective motion in featured story images, illuminated outlines, and subtle glint effects.
+- A small **Motion On/Off** control in the header, with the preference saved locally in the browser. Reduced-motion OS preferences are always honored.
+- Retains existing two borderless portraits and project imagery, black-red theme, 4 curated story chapters and lightbox viewer.
 
-GitHub Pages documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+## Publish to GitHub Pages
 
-## Updating later
+1. Extract the ZIP.
+2. Open your repository: https://github.com/ahamadtha94-prog/thaseen-portfolio
+3. Upload **the contents of this folder**, not an outer containing folder, to the repository root. Replace existing `index.html`, `.css`, `.js`, and upload/replace the `assets` directory.
+4. Commit changes. The repository is already configured for GitHub Pages from the `main` branch and repository root in previous instructions; verify in Settings → Pages if needed.
+5. Your URL: https://ahamadtha94-prog.github.io/thaseen-portfolio/
 
-Upload edited `index.html`, `styles.css`, `script.js`, or images to the same repository and commit the change; GitHub Pages automatically republishes from the main branch.
+For best results, use **Add file → Upload files** to replace each existing file with the same name, or sync the folder using GitHub Desktop. Do not upload the ZIP itself as the website.
 
-## Local preview
+## Files
 
-Open `index.html` directly in a browser or run `python -m http.server 8000` from this directory and visit `http://localhost:8000/`.
+- `index.html` — layout, semantic sections and page metadata.
+- `styles.css` — site foundation, responsive components and lightbox.
+- `motion-v7.css` — established motion styling.
+- `motion-v8.css` — cinematic multi-plane effects, typographic transition and motion control.
+- `script.js` — menu, progress indicator, gallery and navigation.
+- `motion-v7.js` — card and section scroll interactions.
+- `motion-v8.js` — parallax controller, pointer depth and on/off control.
+- `assets/` — curated image files.
 
-## Important notes
+## Performance and accessibility
 
-- This package is **not yet published to any GitHub account**, and it does **not modify** your existing `chatgpt.site` site.
-- The original Design Industry logo has been removed; the site uses **A.T. Thaseen** personal branding. The THINN product logo is intentionally kept on the user's perfume concept imagery.
-- Project imagery shows **conceptual visualizations**, not necessarily photographs of completed or built projects.
-- Some contact information and the CV download link point to existing public destinations from the prior site; please verify them before sharing your new GitHub URL. The CV PDF is not bundled.
-- Google Fonts requires internet access; the site includes fallback fonts.
-- The enquiry form opens the visitor's email application rather than sending data to a backend.
-- Consider sharing public contact information only if you are comfortable displaying it on the internet.
+- Uses native CSS and `requestAnimationFrame` rather than a heavy animation framework. Scroll and mouse motion are bounded.
+- Keyboard navigation, skip-to-content link and image viewer controls preserved.
+- Fine-pointer effects do not run on touch devices; scroll layers are reduced on smaller screens.
+- System `prefers-reduced-motion` disables decorative motion; the user may also toggle it off manually.
+- Original project imagery is shown without manufactured detail changes.
+- Remote Google Fonts are optional; the site works with local fallback fonts when offline.
+
+**Note:** Static portfolio concept images and illustrative visuals are not representations of completed built projects unless explicitly stated.
